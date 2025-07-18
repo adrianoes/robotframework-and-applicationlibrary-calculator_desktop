@@ -25,7 +25,7 @@ if not exist %REPORTS_PATH% (
 )
 
 REM Executa os testes Robot Framework com caminho absoluto e salva os reports na pasta reports
-robot --outputdir %REPORTS_PATH% %ROBOT_PROJECT_PATH%\tests
+robot -d ./results tests
 
 REM Aguarda 3 segundos e fecha automaticamente o WinAppDriver
 timeout /t 3 /nobreak >nul
