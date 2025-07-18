@@ -1,33 +1,32 @@
 @echo off
-REM Caminho absoluto para o WinAppDriver.exe
+REM Absolute path to WinAppDriver.exe
 set WINAPPDRIVER_PATH="C:\Program Files\Windows Application Driver\WinAppDriver.exe"
 
-REM Caminho absoluto para a pasta do seu projeto Robot Framework (onde está a pasta 'tests')
+REM Absolute path to the Robot Framework project folder (where the 'tests' folder is located)
 set ROBOT_PROJECT_PATH="C:\robotframework-and-applicationlibrary-calculator_desktop"
 
-REM Caminho absoluto para a pasta reports
-set REPORTS_PATH=%ROBOT_PROJECT_PATH%\reports
+REM Absolute path to the results folder
+set RESULTS_PATH=%ROBOT_PROJECT_PATH%\results
 
-REM Inicia o WinAppDriver em segundo plano
+REM Start WinAppDriver in the background
 start "" %WINAPPDRIVER_PATH%
 
-REM Aguarda 5 segundos para garantir que o WinAppDriver esteja pronto
+REM Wait 5 seconds to ensure WinAppDriver is ready
 timeout /t 5 /nobreak >nul
 
-REM Cria a pasta reports se não existir
-if not exist %REPORTS_PATH% (
-    mkdir %REPORTS_PATH%
+REM Create the results folder if it does not exist, or clean it if it does
+if not exist %RESULTS_PATH% (
+    mkdir %RESULTS_PATH%
 ) else (
-    REM Limpa o conteúdo da pasta reports
-    echo Limpando a pasta reports...
-    rmdir /s /q %REPORTS_PATH%
-    mkdir %REPORTS_PATH%
+    echo Cleaning the results folder...
+    rmdir /s /q %RESULTS_PATH%
+    mkdir %RESULTS_PATH%
 )
 
-REM Executa os testes Robot Framework com caminho absoluto e salva os reports na pasta reports
-robot -d ./results tests
+REM Run Robot Framework tests and save reports in the results folder
+robot -d %RESULTS_PATH% tests
 
-REM Aguarda 3 segundos e fecha automaticamente o WinAppDriver
+REM Wait 3 seconds and automatically close WinAppDriver
 timeout /t 3 /nobreak >nul
 taskkill /IM WinAppDriver.exe /F
 
