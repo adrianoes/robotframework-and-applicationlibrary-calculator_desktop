@@ -6,7 +6,7 @@ Desktop testing in Windows Calculator app. This project contains basic examples 
 
 | Requirement                     | Version         | Note                                                            |
 | :------------------------------ |:----------------| :-------------------------------------------------------------- |
-| Windows SDK for Windows 11      | 10.0.26100.4188 | -                                                               |
+| Windows SDK                     | 10.0.26100.4188 | -                                                               |
 | WinAppDriver.exe                | 1.2.99          | -                                                               |
 | Python                          | 3.13.4          | -                                                               |
 | Visual Studio Code              | 1.89.1          | -                                                               |
