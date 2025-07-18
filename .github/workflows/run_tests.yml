@@ -1,0 +1,30 @@
+name: Run Robot Tests on Self-Hosted
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Robot Framework tests using .bat script
+        run: |
+          cd "C:\robotframework-and-applicationlibrary-calculator_desktop"
+          run_tests.bat
+
+      - name: Upload Robot Framework reports as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: robotframework-reports
+          path: C:\robotframework-and-applicationlibrary-calculator_desktop\reports

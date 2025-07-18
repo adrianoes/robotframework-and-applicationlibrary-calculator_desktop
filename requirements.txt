@@ -1,0 +1,7 @@
+robotframework
+robotframework-applicationlibrary
+Appium-Python-Client==1.3.0
+selenium==3.141.0
+urllib3<=1.26.16
+robotframework-faker
+setuptools
