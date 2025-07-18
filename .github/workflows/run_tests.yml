@@ -16,12 +16,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Robot Framework tests using .bat script
-        run: |
-          cd "C:\robotframework-and-applicationlibrary-calculator_desktop"
-          run_tests.bat
+        shell: powershell
+        run: .\run_tests.bat
 
       - name: Upload Robot Framework reports as artifacts
         uses: actions/upload-artifact@v4
         with:
           name: robotframework-reports
-          path: C:\robotframework-and-applicationlibrary-calculator_desktop\reports
+          path: reports/
